@@ -1,5 +1,6 @@
 import 'package:compteur/cubit/app/app_cubit.dart';
 import 'package:compteur/features/authentifications/presentation/pages/connexion.dart';
+import 'package:compteur/features/meteo/presenter/pages/meteo_view.dart';
 import 'package:compteur/pages/bloc_page.dart';
 import 'package:compteur/pages/cubit_page.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(width: 20),
             InkWell(
-              onTap: (){},
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (ctx){return MeteoView();}));},
               child: Container(
                 alignment: Alignment.center,
                 width: 100,height: 100,
