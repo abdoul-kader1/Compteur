@@ -9,8 +9,7 @@ final class AuthInitial extends AuthState {
 }
 
 final class AuthSucces extends AuthState {
-  final String usernameAndPassword;
-  AuthSucces(this.usernameAndPassword);
+  AuthSucces();
 }
 
 final class AuthEchec extends AuthState{

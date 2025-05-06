@@ -8,5 +8,6 @@ final class ConnexionClient extends AuthEvent{
   final String mdp;
   final bool checkBox;
   final GlobalKey<FormState> keyform;
-  ConnexionClient(this.email,this.mdp,this.keyform,this.checkBox);
+  final AppCubit appCubit;
+  ConnexionClient(this.email,this.mdp,this.keyform,this.checkBox,this.appCubit);
 }

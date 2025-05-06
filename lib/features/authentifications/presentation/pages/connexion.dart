@@ -1,8 +1,10 @@
-import 'package:compteur/home_page.dart';
+import 'package:compteur/cubit/app/app_cubit.dart';
+import 'package:compteur/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/auth_bloc.dart';
 import '../cubit/auth_champ_cubit.dart';
+import '../cubit/mdp_view_cubit.dart';
 
 class Connexion extends StatelessWidget {
   const Connexion({super.key});
@@ -10,6 +12,7 @@ class Connexion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<AuthChampCubit>().state as AuthChampInitial;
+    final controllerMdp = context.watch<MdpViewCubit>().state;
     return BlocConsumer<AuthBloc,AuthState>(
         builder: (context,state){
           return Scaffold(
@@ -25,13 +28,13 @@ class Connexion extends StatelessWidget {
                       controller: AuthChampInitial.emailController,
                       validator: (valeur){
                         if(valeur!.isEmpty){
-                          return "Email vite";
+                          return "Email ou nom d'utilisateur vide";
                         }else{
                           return null;
                         }
                       },
                       decoration: InputDecoration(
-                          hintText: "Email"
+                          hintText: "Email ou nom d'utilisateur"
                       ),
 
                     ),
@@ -39,14 +42,19 @@ class Connexion extends StatelessWidget {
                     TextFormField(
                       validator: (valeur){
                         if(valeur!.isEmpty){
-                          return "mdp vite";
+                          return "mdp vide";
                         }else{
                           return null;
                         }
                       },
                       controller: AuthChampInitial.mdpController,
+                      obscureText: controllerMdp,
                       decoration: InputDecoration(
-                          hintText: "Mot de passe"
+                          hintText: "Mot de passe",
+                        suffixIcon: IconButton(
+                            onPressed: (){context.read<MdpViewCubit>().changeViewMdo();},
+                            icon: Icon(Icons.remove_red_eye_outlined
+                        ))
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -68,11 +76,12 @@ class Connexion extends StatelessWidget {
                             context.read<AuthBloc>().add(
                                 ConnexionClient(
                                   AuthChampInitial.emailController.text, AuthChampInitial.mdpController.text,
-                                  AuthChampInitial.formKey,controller.checkbox
+                                  AuthChampInitial.formKey,controller.checkbox,context.read<AppCubit>()
                                 )
                             );
                           },
-                          child: context.watch<AuthBloc>().state is AuthLoading?const CircularProgressIndicator():Text("Se connecter")
+                          child: context.watch<AuthBloc>().state is AuthLoading?
+                          SizedBox(width:20,height:20,child:CircularProgressIndicator()):Text("Se connecter")
                       ),
                     )
                   ],
@@ -89,7 +98,7 @@ class Connexion extends StatelessWidget {
             AuthChampInitial.emailController.clear();
             AuthChampInitial.mdpController.clear();
             context.read<AuthChampCubit>().changeValeurCheckBox(false);
-            Navigator.push(context, MaterialPageRoute(builder: (ctx){return MyHomePage();}));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx){return MyHomePage();}));
           }
         }
     );
