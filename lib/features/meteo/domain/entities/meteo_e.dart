@@ -6,12 +6,12 @@ class Meteo {
   List<Weather> weather;
   Main main;
   Wind wind;
-  String name;
+  DateTime dt;
   Meteo({
     required this.weather,
     required this.main,
     required this.wind,
-    required this.name,
+    required this.dt,
   });
 }
 

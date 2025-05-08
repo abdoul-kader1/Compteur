@@ -6,8 +6,8 @@ class WindModel extends Wind{
 
   factory WindModel.fromMap(Map<String, dynamic> map) {
     return WindModel(
-      speed: map['speed'] as double,
-      deg: map['deg'] as int,
+      speed: map['speed'],
+      deg: map['deg'],
     );
   }
 

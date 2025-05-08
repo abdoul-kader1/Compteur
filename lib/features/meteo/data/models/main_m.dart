@@ -6,14 +6,14 @@ class MainModel extends Main{
 
   factory MainModel.fromMap(Map<String, dynamic> map) {
     return MainModel(
-      temp: map['temp'] as double,
-      feelsLike: map['feels_like'] as double,
-      tempMin: map['temp_min'] as double,
-      tempMax: map['temp_max'] as double,
-      pressure: map['pressure'] as int,
-      humidity: map['humidity'] as int,
-      seaLevel: map['sea_level'] as int,
-      grndLevel: map['grnd_level'] as int,
+      temp: map['temp'],
+      feelsLike: map['feels_like'],
+      tempMin: map['temp_min'],
+      tempMax: map['temp_max'],
+      pressure: map['pressure'],
+      humidity: map['humidity'],
+      seaLevel: map['sea_level'],
+      grndLevel: map['grnd_level'],
     );
   }
 }

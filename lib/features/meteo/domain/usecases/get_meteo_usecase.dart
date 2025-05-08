@@ -1,14 +1,14 @@
-import 'package:compteur/features/meteo/domain/entities/meteo_e.dart';
+import 'package:compteur/features/meteo/domain/entities/prevision_meteo_e.dart';
 import 'package:compteur/features/meteo/domain/repositorys/meteo_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-class GetMeteo{
+class GetMeteoUseCase{
 
   final MeteoRepository meteoRepository;
 
-  GetMeteo(this.meteoRepository);
+  GetMeteoUseCase(this.meteoRepository);
 
-  Future<Either<String, Meteo>>getMeteoVilleOrCommune(String query)async{
+  Future<Either<String,PrevisionMeteo>>getMeteoVilleOrCommune(String query)async{
    return await meteoRepository.getMeteoVilleOrCommune(query);
   }
 

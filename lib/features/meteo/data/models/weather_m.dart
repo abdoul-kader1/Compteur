@@ -6,10 +6,10 @@ class WeatherModel extends Weather{
 
   factory WeatherModel.fromMap(Map<String, dynamic> map) {
     return WeatherModel(
-      id: map['id'] as int,
-      main: map['main'] as String,
-      description: map['description'] as String,
-      icon: map['icon'] as String,
+      id: map['id'],
+      main: map['main'],
+      description: map['description'],
+      icon: map['icon'],
     );
   }
 }

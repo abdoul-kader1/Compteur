@@ -4,6 +4,6 @@ part of 'meteo_cubit.dart';
 sealed class MeteoStateCubit {}
 
 final class MeteoInitialCubit extends MeteoStateCubit {
-  final Meteo?meteo;
-  MeteoInitialCubit([this.meteo]);
+  final PrevisionMeteo?meteos;
+  MeteoInitialCubit([this.meteos]);
 }

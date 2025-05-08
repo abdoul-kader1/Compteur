@@ -1,8 +1,8 @@
 class Main {
-  double temp;
-  double feelsLike;
-  double tempMin;
-  double tempMax;
+  dynamic temp;
+  dynamic feelsLike;
+  dynamic tempMin;
+  dynamic tempMax;
   int pressure;
   int humidity;
   int seaLevel;
@@ -18,17 +18,4 @@ class Main {
     required this.seaLevel,
     required this.grndLevel,
   });
-
-  factory Main.fromMap(Map<String, dynamic> map) {
-    return Main(
-      temp: map['temp'] as double,
-      feelsLike: map['feelsLike'] as double,
-      tempMin: map['tempMin'] as double,
-      tempMax: map['tempMax'] as double,
-      pressure: map['pressure'] as int,
-      humidity: map['humidity'] as int,
-      seaLevel: map['seaLevel'] as int,
-      grndLevel: map['grndLevel'] as int,
-    );
-  }
 }
