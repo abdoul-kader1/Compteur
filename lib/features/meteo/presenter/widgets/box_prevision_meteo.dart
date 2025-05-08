@@ -48,33 +48,36 @@ class BoxPrevisionMeteo extends StatelessWidget {
                     decoration: BoxDecoration(
                         border: i<9?Border(bottom: BorderSide(color: CompteurCouleur.greyColors)):null
                     ),
-                    child: Row(
-                      children: [
-                        Container(
-                            width: MediaQuery.sizeOf(context).width*0.4,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Texte(CompteurFonction.formateurDateComplet(meteos[i].dt),couleur: Colors.white),
-                              Tooltip(
-                                triggerMode: TooltipTriggerMode.tap,
-                                message: meteos[i].weather[0].description,
-                                  child: Image.network("https://openweathermap.org/img/wn/${meteos[i].weather[0].icon}@2x.png")
-                              ),
-                            ],
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                              width: 170,height: 40,
+                            child:Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Texte(CompteurFonction.formateurDateComplet(meteos[i].dt),couleur: Colors.white),
+                                Tooltip(
+                                    triggerMode: TooltipTriggerMode.tap,
+                                    message: meteos[i].weather[0].description,
+                                    child: Image.network("https://openweathermap.org/img/wn/${meteos[i].weather[0].icon}@2x.png")
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width*0.4,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Icon(FontAwesomeIcons.arrowUp,size: 13,color: Colors.white),Texte("${meteos[i].main.tempMax}º ",poids: FontWeight.w700,couleur: Colors.white),
-                              Icon(FontAwesomeIcons.arrowDown,size: 13,color: Colors.white),Texte("${meteos[i].main.tempMin}º",poids: FontWeight.w700,couleur: Colors.white),
-                            ],
-                          ),
-                        )
-                      ],
+                          Container(
+                            width: 150,height: 40,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(FontAwesomeIcons.arrowUp,size: 13,color: Colors.white),Texte("${meteos[i].main.tempMax}º ",poids: FontWeight.w700,couleur: Colors.white),
+                                Icon(FontAwesomeIcons.arrowDown,size: 13,color: Colors.white),Texte("${meteos[i].main.tempMin}º",poids: FontWeight.w700,couleur: Colors.white),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
